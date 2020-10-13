@@ -2,8 +2,8 @@ package io.datastructures;
 
 public class MyLinkedList<K> {
 	
-	private INode<K> head ;
-	private INode<K> tail ;
+	public INode<K> head ;
+	public INode<K> tail ;
 	
 	MyLinkedList()
 	{
@@ -11,10 +11,18 @@ public class MyLinkedList<K> {
 		this.tail = null;		
 	}
 	
-	public void add(INode<K> newNode) {	
-		this.head = newNode;
-		this.tail = newNode;
-	
+	public void add(INode<K> newNode) {
+		if(tail == null)
+			tail = newNode;
+		if(head == null)
+		{
+			head = newNode;
+		}	
+		else
+		{
+			newNode.setNext(head);
+			head = newNode;
+		}
 	}
 	
 	
