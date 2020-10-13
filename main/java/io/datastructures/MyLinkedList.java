@@ -75,4 +75,16 @@ public class MyLinkedList<K> {
 		}
 		return temp;
 	}
+	
+	/**
+	 * UC 8 inserting after element
+	 * 
+	 * @param integer
+	 * @param newNode
+	 */
+	public void addAfterElement(Integer integer, INode<K> newNode) {
+		INode<K> tempNode = search(integer);
+		newNode.setNext(tempNode.getNext());
+		tempNode.setNext(newNode);
+	}
 }

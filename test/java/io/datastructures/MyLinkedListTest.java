@@ -83,5 +83,20 @@ class MyLinkedListTest {
 		myLinkedList.addAtTail(thirdNode);
 		assertEquals(secondNode, myLinkedList.search(30));
 	}
+	
+	@Test
+	public void whenAddAfterElementMethodCalled_shouldAdd_afterGivenElement() {
+		MyNode<Integer> firstNode = new MyNode<>(56);
+		MyNode<Integer> secondNode = new MyNode<>(30);
+		MyNode<Integer> thirdNode = new MyNode<>(70);
+		MyNode<Integer> fourthNode = new MyNode<>(40);
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<Integer>();
+		myLinkedList.addAtTail(firstNode);
+		myLinkedList.addAtTail(secondNode);
+		myLinkedList.addAtTail(thirdNode);
+		myLinkedList.addAfterElement(30, fourthNode);
+		boolean result = secondNode.getNext().equals(fourthNode);
+		assertTrue(result);
+	}
 
 }
