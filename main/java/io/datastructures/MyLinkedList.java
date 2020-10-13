@@ -1,6 +1,6 @@
 package io.datastructures;
 
-public class MyLinkedList<K> {
+public class MyLinkedList<K extends Comparable <K>> {
 	
 	public INode<K> head ;
 	public INode<K> tail ;
@@ -146,6 +146,36 @@ public class MyLinkedList<K> {
 		}
 		System.out.print(temp.getKey());
 		System.out.println();
+	}
+	
+	/**
+	 * UC 10 adding node in ascending order in linked list
+	 * 
+	 * @param newNode
+	 * @return
+	 */
+	public boolean addInOrder(INode<K> newNode) {
+		INode<K> temp = head;
+		if (head == null) { 
+			head = newNode;
+			tail = newNode;
+		} else if (head.getKey().compareTo(newNode.getKey()) > 0) { 
+			newNode.setNext(temp);
+			head = newNode;
+		} else if (tail.getKey().compareTo(newNode.getKey()) < 0) { 
+																	
+			tail.setNext(newNode);
+			tail = newNode;
+		} else {
+			INode<K> prev = head;
+			while (temp.getNext() != null && temp.getKey().compareTo(newNode.getKey()) < 0) {
+				prev = temp;
+				temp = temp.getNext();
+			}
+			newNode.setNext(prev.getNext());
+			prev.setNext(newNode);
+		}
+		return true;
 	}
 
 }
