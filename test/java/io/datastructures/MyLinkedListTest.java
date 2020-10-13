@@ -71,5 +71,17 @@ class MyLinkedListTest {
 		myLinkedList.addAtTail(thirdNode);
 		assertEquals(thirdNode, myLinkedList.popLast());
 	}
+	
+	@Test
+	public void searchMethod_shouldReturnNode_ifPresent() {
+		MyNode<Integer> firstNode = new MyNode<>(56);
+		MyNode<Integer> secondNode = new MyNode<>(30);
+		MyNode<Integer> thirdNode = new MyNode<>(70);
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<Integer>();
+		myLinkedList.addAtTail(firstNode);
+		myLinkedList.addAtTail(secondNode);
+		myLinkedList.addAtTail(thirdNode);
+		assertEquals(secondNode, myLinkedList.search(30));
+	}
 
 }
