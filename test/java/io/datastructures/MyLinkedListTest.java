@@ -7,19 +7,45 @@ import org.junit.jupiter.api.Test;
 class MyLinkedListTest {
 
 	@Test
-	public void newNodeAdded_shouldReturn_newNode() {
-		
+	public void whenAddAtHeadMethodCalled_shouldAdd_AtHead() {
 		MyNode<Integer> firstNode = new MyNode<>(56);
 		MyNode<Integer> secondNode = new MyNode<>(30);
 		MyNode<Integer> thirdNode = new MyNode<>(70);
 		MyLinkedList<Integer> myLinkedList = new MyLinkedList<Integer>();
-		myLinkedList.add(firstNode);
-		myLinkedList.add(secondNode);
-		myLinkedList.add(thirdNode);
+		myLinkedList.addAtHead(firstNode);
+		myLinkedList.addAtHead(secondNode);
+		myLinkedList.addAtHead(thirdNode);
 		boolean result = myLinkedList.head.equals(firstNode) && myLinkedList.head.getNext().equals(secondNode)
-				&& myLinkedList.tail.equals(thirdNode);
+				         && myLinkedList.tail.equals(thirdNode);
 		assertTrue(result);
-		
+	}
+
+	@Test
+	public void whenAddAtTailMethodCalled_shouldAdd_AtTail() {
+		MyNode<Integer> firstNode = new MyNode<>(56);
+		MyNode<Integer> secondNode = new MyNode<>(30);
+		MyNode<Integer> thirdNode = new MyNode<>(70);
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<Integer>();
+		myLinkedList.addAtTail(firstNode);
+		myLinkedList.addAtTail(secondNode);
+		myLinkedList.addAtTail(thirdNode);
+		boolean result = myLinkedList.head.equals(firstNode) && myLinkedList.head.getNext().equals(secondNode)
+				         && myLinkedList.tail.equals(thirdNode);
+		assertTrue(result);
+	}
+
+	@Test
+	public void insertMethod_shouldInsert_betweenTwoNodes() {
+		MyNode<Integer> firstNode = new MyNode<>(56);
+		MyNode<Integer> secondNode = new MyNode<>(30);
+		MyNode<Integer> thirdNode = new MyNode<>(70);
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<Integer>();
+		myLinkedList.addAtTail(firstNode);
+		myLinkedList.addAtTail(thirdNode);
+		myLinkedList.insert(firstNode, secondNode);
+		boolean result = myLinkedList.head.equals(firstNode) && myLinkedList.head.getNext().equals(secondNode)
+				         && myLinkedList.tail.equals(thirdNode);
+		assertTrue(result);
 	}
 
 }

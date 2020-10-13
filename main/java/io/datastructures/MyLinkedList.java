@@ -11,8 +11,7 @@ public class MyLinkedList<K> {
 		this.tail = null;		
 	}
 	
-	public void add(INode<K> newNode) {
-		
+	public void addAtHead(INode<K> newNode) {
 		if (head == null)
 			head = newNode;
 		if (tail == null)
@@ -21,5 +20,21 @@ public class MyLinkedList<K> {
 			tail.setNext(newNode);
 			tail = newNode;
 		}
+	}
+
+	public void addAtTail(INode<K> newNode) {
+		if (head == null)
+			head = newNode;
+		if (tail == null)
+			tail = newNode;
+		else {
+			tail.setNext(newNode);
+			tail = newNode;
+		}
+	}
+
+	public void insert(INode<K> myNode, INode<K> newNode) {
+		newNode.setNext(myNode.getNext());
+		myNode.setNext(newNode);
 	}
 }
