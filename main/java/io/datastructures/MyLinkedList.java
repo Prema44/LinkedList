@@ -12,19 +12,14 @@ public class MyLinkedList<K> {
 	}
 	
 	public void add(INode<K> newNode) {
-		if(tail == null)
+		
+		if (head == null)
+			head = newNode;
+		if (tail == null)
 			tail = newNode;
-		if(head == null)
-		{
-			head = newNode;
-		}	
-		else
-		{
-			newNode.setNext(head);
-			head = newNode;
+		else {
+			tail.setNext(newNode);
+			tail = newNode;
 		}
 	}
-	
-	
-
 }
