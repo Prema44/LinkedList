@@ -76,6 +76,7 @@ public class MyLinkedList<K> {
 		return temp;
 	}
 	
+	
 	/**
 	 * UC 8 inserting after element
 	 * 
@@ -87,4 +88,64 @@ public class MyLinkedList<K> {
 		newNode.setNext(tempNode.getNext());
 		tempNode.setNext(newNode);
 	}
+	
+	/**
+	 * UC 9 deleting any element
+	 * 
+	 * @param integer
+	 */
+	public int delete(Integer integer) {
+		INode<K> temp = head;
+		INode<K> prev = head;
+		if (head.getKey().equals(integer))
+		{
+			head = head.getNext();
+		    return size();
+		}
+		else if(tail.getKey().equals(integer)) 
+		{
+			popLast();
+			return size();
+		}
+		else {
+			while (temp.getNext() != null) {
+				if (temp.getKey().equals(integer))
+					break;
+				prev = temp;
+				temp = temp.getNext();
+			}
+			prev.setNext(temp.getNext());
+			return size();
+		}
+	}
+
+	/**
+	 * UC 9 showing size of linked list
+	 * 
+	 * @return
+	 */
+	public int size() {
+		INode<K> temp = head;
+		int size = 0;
+		while (temp.getNext() != null) {
+			size++;
+			temp = temp.getNext();
+		}
+		if(temp.equals(tail))
+		{
+			size++;
+		}
+		return size;
+	}
+
+	public void print() {
+		INode<K> temp = head;
+		while (temp.getNext() != null) {
+			System.out.print(temp.getKey() + "->");
+			temp = temp.getNext();
+		}
+		System.out.print(temp.getKey());
+		System.out.println();
+	}
+
 }
