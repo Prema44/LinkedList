@@ -43,4 +43,20 @@ public class MyLinkedList<K> {
 		head = head.getNext();
 		return poppedNode;
 	}
+	
+	/**
+	 * UC 6 deleting last node
+	 * 
+	 * @return
+	 */
+	public INode<K> popLast() {
+		INode<K> traverseNode = head;
+		while (!traverseNode.getNext().equals(tail)) {
+			traverseNode = traverseNode.getNext();
+		}
+
+		INode<K> tempNode = tail;
+		tail = traverseNode;
+		return tempNode;
+	}
 }
